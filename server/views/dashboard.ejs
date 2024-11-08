@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Dashboard</h1>
+    </header>
+    <main>
+        <p>Hello, Alvis! You are logged in.</p>
+    </main>
+    <br>
+    <button id="adduser">Add User</button>
+    <br>
+    <footer>
+        <p>&copy; 2023 Your Company</p>
+    </footer>
+    
+    <script>
+        function addUser() {
+            const userName = prompt("Enter user name:");
+            const userEmail = prompt("Enter user email:");
+            
+            if (userName && userEmail) {
+                const key = userName.toLowerCase().replace(/\s+/g, '-'); 
+                const value = { name: userName, email: userEmail };
+    
+                fetch('/add-realtime-data', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ key, value })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('User added successfully!');
+                    } else {
+                        alert('Failed to add user.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred while adding the user.');
+                });
+            } else {
+                alert('User name and email are required.');
+            }
+        }
+    
+        document.getElementById('adduser').addEventListener('click', addUser);
+    </script>
+</body>
+</html>
