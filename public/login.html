@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <!-- Firebase Auth SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+</head>
+<body>
+  <div class="box">
+    <input type="email" id="email" placeholder="email" ><br>
+    <input type="password" id="password" placeholder="password" ><br><br>
+    <button id="login">Login</button>
+    <button id="signup">Signup</button>
+    <button id="logout" style="display:none;">Logout</button>
+    <div id="loginMsg"></div>
+  </div><br><br>
+
+  <div class="box">
+    <button onclick="callOpenRoute()">Call Open Route</button>
+    <button onclick="callSecureRoute()">Call Secure Route</button>
+    <div id="routeMsg"></div>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>
